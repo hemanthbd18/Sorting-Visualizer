@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Quick Sort</h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Quick Sort</button>
+        <button id="pause-resume">Pause</button>
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+    </div>
+    
+    <aside id="quick-sort-info" class="info-panel">
+        <h2>Quick Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n log n)</td><td>O(log n)</td></tr>
+            <tr><td>Average Case</td><td>O(n log n)</td><td>O(log n)</td></tr>
+            <tr><td>Worst Case</td><td>O(n^2)</td><td>O(n)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <h2><strong>What is Quick Sort?</strong></h2>
+            <p>Quick Sort is a divide-and-conquer sorting algorithm. It works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.</p><br>
+        
+            <h2><strong>How Does It Work?</strong></h2>
+            <p>1. Choose a pivot element from the array.</p>
+            <p>2. Partition the array into two sub-arrays, with elements less than the pivot on the left, and elements greater than the pivot on the right.</p>
+            <p>3. Recursively apply the same procedure to the left and right sub-arrays until the entire array is sorted.</p><br>
+        
+            <h2><strong>Example:</strong></h2>
+            <p>Let's say we have the following unsorted list:</p>
+            <p><code>[5, 2, 9, 1, 5, 6]</code></p><br>
+        
+            <h3><strong>Step 1: Choose a pivot</strong></h3>
+            <p>We will choose the last element, 6, as the pivot.</p>
+            <p><code>[5, 2, 9, 1, 5] | [6]</code></p><br>
+        
+            <h3><strong>Step 2: Partition the array</strong></h3>
+            <p>We will partition the array into elements less than or equal to 6 and elements greater than 6:</p>
+            <p><code>[5, 2, 1, 5] | [6] | [9]</code></p><br>
+        
+            <h3><strong>Step 3: Recursively sort the left and right sub-arrays</strong></h3>
+            <p>Now, we sort the left sub-array ([5, 2, 1, 5]) and the right sub-array ([9]).</p><br>
+        
+            <h3><strong>Left Sub-array: [5, 2, 1, 5]</strong></h3>
+            <p>Choose a pivot (5). Partition the array:</p>
+            <p><code>[2, 1] | [5] | [5]</code></p><br>
+        
+            <h3><strong>Right Sub-array: [9]</strong></h3>
+            <p>The array is already sorted as it has only one element.</p><br>
+        
+            <h3><strong>Step 4: Final sorted array</strong></h3>
+            <p>After recursively sorting the left and right sub-arrays, the final sorted list is:</p>
+            <p><code>[1, 2, 5, 5, 6, 9]</code></p><br>
+        
+            <h3><strong>Key Points:</strong></h3>
+            <p>1. Quick Sort is fast in practice with an average time complexity of O(n log n).</p>
+            <p>2. It can perform poorly in the worst case (O(n^2)) when the pivot is poorly chosen.</p>
+            <p>3. It is an in-place sorting algorithm, meaning it does not require additional memory for sorting.</p>
+        </div>
+    </aside>
+
+    <script src="quick.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+
+</body>
+</html>

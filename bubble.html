@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Bubble Sort </h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Bubble Sort</button>
+        <button id="pause-resume">Pause</button>
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+       
+        
+        
+    </div>
+    
+    <aside id="bubble-sort-info" class="info-panel">
+        <h2>Bubble Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n)</td><td>O(1)</td></tr>
+            <tr><td>Average Case</td><td>O(n^2)</td><td>O(1)</td></tr>
+            <tr><td>Worst Case</td><td>O(n^2)</td><td>O(1)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <!-- <h3>Explanatio?n:</h3> -->
+            <!-- <p>Bubble Sort is a simple sorting algorithm.<br>
+                It compares adjacent elements and swaps them if they are in the wrong order.<br>
+                This process repeats for every element until the array is sorted.<br>
+               
+                Suitable for small datasets but inefficient for large ones.</p> -->
+            <!-- <p>Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.</p> -->
+           <h2> <p><strong>What is Bubble Sort?</strong></p><br></h2>
+            <p>Bubble Sort is a way to arrange numbers (or items) in the right order. It compares two numbers at a time and swaps them if they are in the wrong order. This process is repeated until the entire list is sorted.</p>
+        <br>
+        <h2>    <p><strong>How Does It Work?</strong></p></h2>
+            <p>1. Start at the beginning of the list.</p>
+            <p>2. Compare the first two numbers. If the first number is bigger, swap them. If the first number is smaller or equal, leave them as they are.</p>
+            <p>3. Move to the next pair and repeat.</p>
+            <p>4. Keep doing this until you reach the end of the list. After this first pass, the biggest number will be at the end.</p>
+            <p>5. Then, go back to the start, but ignore the last number (because it's already in the right place).</p>
+            <p>6. Repeat until the whole list is sorted.</p><br>
+        
+           <h2> <p><strong>Example:</strong></p></h2>
+            <p>Let's say we have this list of numbers:</p>
+            <p><code>[5, 2, 9, 1, 5, 6]</code></p><br>
+        
+           <h3> <p><strong>First pass:</strong></p></h3>
+            <p>1. Compare 5 and 2 → 5 is bigger, so swap them: <code>[2, 5, 9, 1, 5, 6]</code></p>
+            <p>2. Compare 5 and 9 → no swap, because 5 is smaller than 9. <code>[2, 5, 9, 1, 5, 6]</code></p>
+            <p>3. Compare 9 and 1 → 9 is bigger, so swap them: <code>[2, 5, 1, 9, 5, 6]</code></p>
+            <p>4. Compare 9 and 5 → 9 is bigger, so swap them: <code>[2, 5, 1, 5, 9, 6]</code></p>
+            <p>5. Compare 9 and 6 → 9 is bigger, so swap them: <code>[2, 5, 1, 5, 6, 9]</code></p>
+            <p>Now the biggest number (9) is in the last spot.</p><br>
+        
+           <h3> <p><strong>Second pass:</strong></p></h3>
+            <p>1. Compare 2 and 5 → no swap. <code>[2, 5, 1, 5, 6, 9]</code></p>
+            <p>2. Compare 5 and 1 → 5 is bigger, so swap them: <code>[2, 1, 5, 5, 6, 9]</code></p>
+            <p>3. Compare 5 and 5 → no swap. <code>[2, 1, 5, 5, 6, 9]</code></p>
+            <p>4. Compare 5 and 6 → no swap. <code>[2, 1, 5, 5, 6, 9]</code></p>
+            <p>Now, 6 is in its correct place.</p><br>
+        
+           <h3> <p><strong>Third pass:</strong></p></h3>
+            <p>1. Compare 2 and 1 → 2 is bigger, so swap them: <code>[1, 2, 5, 5, 6, 9]</code></p>
+            <p>2. Compare 2 and 5 → no swap. <code>[1, 2, 5, 5, 6, 9]</code></p>
+            <p>Now the list is sorted!</p><br>
+        
+           <h3> <p><strong>Final sorted list:</strong></p></h3>
+            <p><code>[1, 2, 5, 5, 6, 9]</code></p><br>
+        
+           <h3> <p><strong>Key Points:</strong></p></h3>
+            <p>1. The biggest number "bubbles" up to the end of the list after each pass.</p>
+            <p>2. It keeps doing this until the list is fully sorted.</p>
+            <p>3. It’s simple but not the fastest for large lists.</p>
+        
+           
+        </div>
+    </aside>
+
+    <script src="bubble.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+
+</body>
+</html>

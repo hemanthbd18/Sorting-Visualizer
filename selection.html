@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Selection Sort</h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Selection Sort</button>
+        <button id="pause-resume">Pause</button>
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+    </div>
+    
+    <aside id="selection-sort-info" class="info-panel">
+        <h2>Selection Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n²)</td><td>O(1)</td></tr>
+            <tr><td>Average Case</td><td>O(n²)</td><td>O(1)</td></tr>
+            <tr><td>Worst Case</td><td>O(n²)</td><td>O(1)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <h2><strong>What is Selection Sort?</strong></h2>
+            <p>Selection Sort is a simple sorting algorithm. It works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element.</p><br>
+        
+            <h2><strong>How Does It Work?</strong></h2>
+            <p>1. Find the smallest element in the unsorted part of the array.</p>
+            <p>2. Swap it with the first unsorted element.</p>
+            <p>3. Repeat until the array is sorted.</p><br>
+        
+            <h2><strong>Example:</strong></h2>
+            <p>Let's say we have the following unsorted list:</p>
+            <p><code>[5, 2, 9, 1, 5, 6]</code></p><br>
+        
+            <h3><strong>Step 1: Find the minimum</strong></h3>
+            <p>The smallest element in the list is 1.</p>
+            <p><code>[1, 2, 9, 5, 5, 6]</code></p><br>
+        
+            <h3><strong>Step 2: Find the next minimum</strong></h3>
+            <p>The smallest element in the remaining list is 2.</p>
+            <p><code>[1, 2, 9, 5, 5, 6]</code></p><br>
+        
+            <h3><strong>Step 3: Continue sorting</strong></h3>
+            <p>The process continues until the list is fully sorted:</p>
+            <p><code>[1, 2, 5, 5, 6, 9]</code></p><br>
+        
+            <h3><strong>Key Points:</strong></h3>
+            <p>1. Selection Sort has a time complexity of O(n²) for all cases (best, average, and worst).</p>
+            <p>2. It is easy to understand and implement but inefficient for large datasets.</p>
+            <p>3. It is an in-place sorting algorithm, meaning it does not require additional memory.</p>
+        </div>
+    </aside>
+
+    <script src="selection.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+
+</body>
+</html>

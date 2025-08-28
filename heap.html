@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Heap Sort</h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Heap Sort</button>
+        <button id="pause-resume">Pause</button>
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+    </div>
+    
+    <aside id="heap-sort-info" class="info-panel">
+        <h2>Heap Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n log n)</td><td>O(1)</td></tr>
+            <tr><td>Average Case</td><td>O(n log n)</td><td>O(1)</td></tr>
+            <tr><td>Worst Case</td><td>O(n log n)</td><td>O(1)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <!-- <h3>Explanation:</h3>
+            <p>Heap Sort is a comparison-based sorting algorithm that uses a binary heap structure.<br>
+                It works by building a max heap and repeatedly extracting the largest element to build the sorted array.</p> -->
+                <title>Heap Sort Visualizer</title>
+<h1>Heap Sort Visualizer</h1>
+<div id="algorithm-explanation">
+    <h2><strong>What is Heap Sort?</strong></h2>
+    <p>Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to efficiently sort an array.</p>
+    <br>
+    <h2><strong>How Does It Work?</strong></h2>
+    <p>1. Build a max-heap from the unsorted array.</p>
+    <p>2. Swap the root (largest element) with the last element in the array.</p>
+    <p>3. Heapify the reduced heap.</p>
+    <p>4. Repeat the process until the heap is empty.</p>
+    <br>
+    <h2><strong>Example:</strong></h2>
+    <p>Given the unsorted list:</p>
+    <p><code>[5, 2, 9, 1, 5, 6]</code></p>
+    <br>
+    <h3><strong>Step 1: Build Max Heap</strong></h3>
+    <p>The max-heap will look like:</p>
+    <p><code>[9, 5, 6, 1, 2, 5]</code></p>
+    <br>
+    <h3><strong>Step 2: Swap Root with Last Element</strong></h3>
+    <p>After swapping the root with the last element:</p>
+    <p><code>[5, 5, 6, 1, 2, 9]</code></p>
+    <br>
+    <h3><strong>Step 3: Heapify</strong></h3>
+    <p>Re-heapify the remaining heap:</p>
+    <p><code>[6, 5, 5, 1, 2]</code></p>
+    <br>
+    <h3><strong>Final Sorted List:</strong></h3>
+    <p><code>[1, 2, 5, 5, 6, 9]</code></p>
+</div>
+
+        </div>
+    </aside>
+
+    <script src="heap.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+</body>
+</html>

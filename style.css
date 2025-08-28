@@ -1,0 +1,123 @@
+/* General reset for body and universal styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('SORTINGPIC.jpg'); /* Replace with the actual path of your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styling */
+.navbar {
+    height: 60px;
+    background-color: #161616;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Flexbox styling for alignment */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logo container with icon */
+.icon {
+    font-size: 24px;
+    color: #888; /* Default color for the icon */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Font styling inside the logo section */
+.font h1 {
+    font-size: 24px;
+    color: white;
+}
+
+/* Welcome section styles */
+.welcome-section {
+    height: 80vh; /* Occupies 40% of the viewport height */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent black background for contrast */
+    padding: 20px;
+}
+
+.welcome-section h1 {
+    font-size: 2.5em; /* Large font size for the welcome message */
+    color: orange; /* Orange color for the text */
+    text-align: center; /* Center the text */
+}
+
+/* Info section styles */
+.info-section {
+    padding: 80px; /* Padding for content */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for readability */
+    margin-top: 20px; /* Space above the info section */
+    border-radius: 8px; /* Rounded corners */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially hidden to the left */
+    width: 21%;
+    height: 100%; /* Ensures it covers full height */
+    background-color: rgba(38, 38, 38, 0.9); /* Slightly transparent dark background */
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease; /* Smooth transition */
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+/* Active class for showing sidebar */
+.sidebar.active {
+    left: 0; /* Show the sidebar */
+}
+
+/* Styling for algorithm list */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.algorithm-item {
+    padding: 10px; /* Space around each item */
+    border: 1px solid transparent; /* Initial border */
+    transition: border 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.algorithm-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+    border: 1px solid white; /* Highlight border on hover */
+}
+
+/* Button styling */
+#close-sidebar {
+    margin-top: 20px; /* Space above the button */
+    padding: 10px 15px; /* Button padding */
+    background-color: #ff4444; /* Red color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+#close-sidebar:hover {
+    background-color: #ff0000; /* Darker red on hover */
+}

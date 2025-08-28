@@ -1,0 +1,255 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #03060b, #2a5298);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    margin: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ffdd57;
+}
+
+/* Main Content Styling */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+#array-container {
+    flex: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack subarrays vertically */
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(223, 133, 133, 0.1);
+    border: 2px solid rgb(199, 175, 175);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.subarray {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Spacing between subarrays */
+}
+
+.bar {
+    background: #4caf50;
+    margin: 0 5px; /* Spacing between bars */
+    border-radius: 5px;
+    transition: height 0.3s ease, background 0.3s ease;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    height: 100px; /* Default height */
+    display: inline-block;
+    width: 30px;
+}
+
+.bar.active {
+    background: #ff5722; /* Active sorting element */
+}
+
+.bar.sorted {
+    background: #00e676; /* Sorted element */
+}
+
+.bar span {
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Code Container */
+#code-container {
+    flex: 2;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    height: 400px;
+    overflow-y: auto;
+    max-width: 500px;
+}
+
+/* Algorithm Code Styling */
+#algorithm-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    color: #00e676;
+    white-space: pre-wrap;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+#algorithm-code .highlight {
+    background: #ffdd57;
+    color: black;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Controls Styling */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1000px;
+    flex-wrap: wrap;
+}
+
+button, select, input[type="range"] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button {
+    background: #4caf50;
+    color: white;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+input[type="range"] {
+    width: 150px;
+    background: transparent;
+}
+
+select {
+    padding: 8px;
+    background: #fff;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Info Panel Styling */
+.info-panel {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.info-panel h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffdd57;
+}
+
+.info-panel table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    color: white;
+}
+
+.info-panel table th, .info-panel table td {
+    padding: 15px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+/* Loop Indicator Styling */
+#loop-indicator {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #00e676;
+}
+
+/* Dark Mode and Light Mode Styles */
+body.light-mode {
+    background: white;
+    color: black;
+}
+
+body.light-mode header h1 {
+    color: #007bff;
+}
+
+body.light-mode .controls button {
+    background: #007bff;
+    color: white;
+}
+
+body.light-mode .info-panel {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight Sorted Bars */
+.bar.sorted {
+    background: #00e676;
+}
+
+/* Custom Array Input Styling */
+#custom-array {
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+    background: #ff5722;
+    color: white;
+}
+
+/* General code styling */
+.code-container {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap; /* Allows code to wrap if it exceeds container width */
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Style the language selector */
+#language-selector {
+    margin: 10px;
+    padding: 5px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1d1d1d;
+    color: white;
+}

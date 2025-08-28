@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #array-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            height: 200px;
+            width: 80%;
+        }
+        .bar {
+            width: 30px;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin: 0 2px;
+            position: relative;
+        }
+        .bar span {
+            color: white;
+            font-size: 12px;
+            position: absolute;
+            bottom: -20px;
+        }
+        .sorted {
+            background-color: #2ecc71;
+        }
+        .active {
+            background-color: #f39c12;
+        }
+        .key-bar {
+            background-color: #e74c3c;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px 0;
+            width: 80%;
+        }
+        .code {
+            margin-top: 20px;
+            width: 80%;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+     <link rel="stylesheet" href="styleee.css"> <
+</head>
+<body>
+
+<h1>Sorting Visualizer</h1>
+
+<div id="array-container"></div>
+
+<!-- Controls -->
+<div class="controls">
+    <button id="generate-array">Generate Array</button>
+    <button id="start-sort">Start Sort</button>
+    <button id="pause-resume">Pause</button>
+    <button id="go-to-beginning">Go to Beginning</button>
+    <button id="go-to-end">Go to End</button>
+    <input type="range" id="speed-range" min="10" max="500" value="100">
+    <span>Speed: <span id="speed-value">100</span></span>
+    <input type="range" id="size-range" min="5" max="100" value="30">
+    <span>Size: <span id="size-value">30</span></span>
+</div>
+
+<!-- Status Panel -->
+<div id="loop-indicator">Loop indicator: </div>
+<div id="status-panel">
+    Comparisons: <span id="comparisons">0</span><br>
+    Swaps: <span id="swaps">0</span>
+</div>
+
+<!-- Code Trace -->
+<div class="code" id="algorithm-code">
+    <!-- Highlighted code will be inserted here -->
+</div>
+
+<script>
+    // DOM Elements
+    const arrayContainer = document.getElementById("array-container");
+    const generateArrayButton = document.getElementById("generate-array");
+    const startSortButton = document.getElementById("start-sort");
+    const speedRange = document.getElementById("speed-range");
+    const sizeRange = document.getElementById("size-range");
+    const pauseResumeButton = document.getElementById("pause-resume");
+    const loopIndicator = document.getElementById("loop-indicator");
+    const comparisonsDisplay = document.getElementById("comparisons");
+    const swapsDisplay = document.getElementById("swaps");
+    const algorithmCode = document.getElementById("algorithm-code");
+
+    let array = [];
+    let delay = parseInt(speedRange.value);
+    let comparisons = 0;
+    let swaps = 0;
+    let isPaused = false;
+    let isSorting = false;
+    let currentStep = 0;
+
+    // Code snippets for algorithms
+    const codeSnippets = {
+        bubbleSort: [
+            "function bubbleSort(array) {",
+            "  for (let i = 0; i < array.length - 1; i++) {",
+            "    for (let j = 0; j < array.length - i - 1; j++) {",
+            "      if (array[j] > array[j + 1]) {",
+            "        [array[j], array[j + 1]] = [array[j + 1], array[j]];",
+            "      }",
+            "    }",
+            "  }",
+            "  return array;",
+            "}"
+        ]
+    };
+
+    let currentAlgorithm = "bubbleSort";
+
+    // Highlight code line
+    function highlightCodeLine(indices) {
+        const lines = codeSnippets[currentAlgorithm];
+        const highlightedCode = lines.map((line, index) => 
+            indices.includes(index) ? `<span class="highlight">${line}</span>` : line
+        ).join("\n");
+        algorithmCode.innerHTML = highlightedCode;
+    }
+
+    // Generate random array
+    function generateRandomArray(size = 30) {
+        arrayContainer.innerHTML = '';
+        array = Array.from({ length: size }, () => Math.floor(Math.random() * 100) + 1);
+        array.forEach(value => {
+            const bar = document.createElement("div");
+            bar.classList.add("bar");
+            bar.style.height = `${value * 3}px`;
+            bar.style.width = `${100 / size}%`;
+            const number = document.createElement("span");
+            number.textContent = value;
+            bar.appendChild(number);
+            arrayContainer.appendChild(bar);
+        });
+        highlightCodeLine([-1]); // Reset code highlighting
+        comparisons = 0;
+        swaps = 0;
+        comparisonsDisplay.textContent = comparisons;
+        swapsDisplay.textContent = swaps;
+    }
+
+    // Pause/Resume functionality
+    function togglePause() {
+        if (!isSorting) return;
+        isPaused = !isPaused;
+        pauseResumeButton.textContent = isPaused ? "Resume" : "Pause";
+    }
+
+    // Wait function to pause the animation
+    async function waitIfPaused() {
+        while (isPaused) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+    }
+
+    // Bubble Sort Algorithm
+    async function bubbleSort() {
+        if (isSorting) return;
+        isSorting = true;
+        pauseResumeButton.disabled = false;
+
+        const bars = document.querySelectorAll(".bar");
+        for (let i = 0; i < array.length - 1; i++) {
+            for (let j = 0; j < array.length - i - 1; j++) {
+                highlightCodeLine([2, 3]); // Highlight comparison part
+                bars[j].classList.add("active");
+                bars[j + 1].classList.add("active");
+
+                await waitIfPaused();
+                await new Promise(resolve => setTimeout(resolve, delay));
+
+                if (array[j] > array[j + 1]) {
+                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                    bars[j].style.height = `${array[j] * 3}px`;
+                    bars[j + 1].style.height = `${array[j + 1] * 3}px`;
+
+                    swaps++;
+                    swapsDisplay.textContent = swaps;
+                }
+
+                bars[j].classList.remove("active");
+                bars[j + 1].classList.remove("active");
+
+                comparisons++;
+                comparisonsDisplay.textContent = comparisons;
+
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+
+        for (let i = 0; i < bars.length; i++) {
+            bars[i].classList.add("sorted");
+        }
+
+        highlightCodeLine([7]); // End of sorting
+        loopIndicator.textContent = "Array is sorted!";
+        isSorting = false;
+        pauseResumeButton.disabled = true;
+    }
+
+    // Event Listeners
+    generateArrayButton.addEventListener("click", () => generateRandomArray(parseInt(sizeRange.value)));
+    sizeRange.addEventListener("input", () => generateRandomArray(parseInt(sizeRange.value)));
+    speedRange.addEventListener("input", () => {
+        delay = parseInt(speedRange.value);
+        document.getElementById("speed-value").textContent = delay;
+    });
+    pauseResumeButton.addEventListener("click", togglePause);
+    startSortButton.addEventListener("click", bubbleSort);
+
+    // Initialize
+    generateRandomArray(30);
+    highlightCodeLine([-1]);
+    pauseResumeButton.disabled = true; // Disable pause initially
+</script>
+</body>
+</html>

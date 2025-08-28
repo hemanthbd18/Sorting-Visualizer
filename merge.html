@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Merge Sort Visualizer</h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Merge Sort</button>
+        <button id="pause-resume">Pause</button>
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+    </div>
+    
+    <aside id="merge-sort-info" class="info-panel">
+        <h2>Merge Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n log n)</td><td>O(n)</td></tr>
+            <tr><td>Average Case</td><td>O(n log n)</td><td>O(n)</td></tr>
+            <tr><td>Worst Case</td><td>O(n log n)</td><td>O(n)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <h2><strong>What is Merge Sort?</strong></h2>
+            <p>Merge Sort is an efficient, stable, and divide-and-conquer algorithm that splits the array into halves, recursively sorts them, and then merges them back together.</p>
+            <br>
+            <h2><strong>How Does It Work?</strong></h2>
+            <p>1. Divide the unsorted list into two halves.</p>
+            <p>2. Recursively divide each half into two halves until you have sublists of length one.</p>
+            <p>3. Merge the sublists back together in the correct order.</p>
+            <p>4. Repeat until the entire list is sorted.</p>
+        <br>
+            <h2><strong>Example:</strong></h2>
+            <p>Let's say we have the following unsorted list:</p>
+            <p><code>[5, 2, 9, 1, 5, 6]</code></p>
+        <br>
+            <h3><strong>Step 1: Divide the list</strong></h3>
+            <p>Divide the list into two halves:</p>
+            <p><code>[5, 2, 9] | [1, 5, 6]</code></p>
+        <br>
+            <h3><strong>Step 2: Recursively divide each half</strong></h3>
+            <p>Divide each half further:</p>
+            <p><code>[5] | [2, 9]</code> and <code>[1] | [5, 6]</code></p>
+        <br>
+            <h3><strong>Step 3: Merge the sublists</strong></h3>
+            <p>Start merging sorted sublists:</p>
+            <p>Merge <code>[2, 9]</code> → <code>[2, 9]</code></p>
+            <p>Merge <code>[5] | [2, 9]</code> → <code>[2, 5, 9]</code></p>
+            <p>Merge <code>[5, 6]</code> → <code>[5, 6]</code></p>
+        <br>
+            <h3><strong>Step 4: Final Merge</strong></h3>
+            <p>Merge the final sublists:</p>
+            <p><code>[2, 5, 9] | [1, 5, 6]</code> → <code>[1, 2, 5, 5, 6, 9]</code></p>
+        <br>
+            <h3><strong>Final Sorted List:</strong></h3>
+            <p><code>[1, 2, 5, 5, 6, 9]</code></p>
+        <br>
+            <h3><strong>Key Points:</strong></h3>
+            <p>1. Merge Sort is a divide-and-conquer algorithm.</p>
+            <p>2. It consistently performs in O(n log n) time complexity.</p>
+            <p>3. It is a stable sort and requires extra space for the merging process.</p>
+        </div>
+    </aside>
+
+    <script src="merge.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+
+</body>
+</html>

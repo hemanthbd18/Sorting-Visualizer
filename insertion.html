@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Visualizer</title>
+    <link rel="stylesheet" href="styleee.css">
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Insertion Sort</h1>
+    </header>
+    
+    <main>
+        <div id="array-container"></div>
+        <div id="code-container">
+            <h2>Code:</h2>
+            <pre id="algorithm-code"></pre>
+        </div>
+    </main>
+    
+    <div class="controls">
+        <button id="generate-array">Generate Array</button>
+        <button id="start-sort">Start Insertion Sort</button>
+        <button id="pause-resume">Pause</button>
+        <!-- <button id="step-sort">Step Through</button> New Step button -->
+        <label for="size-range">Array Size:</label>
+        <input type="range" id="size-range" min="10" max="100" value="30">
+        <label for="speed-range">Speed:</label>
+        <input type="range" id="speed-range" min="50" max="1000" value="300">
+        <label for="custom-array">Custom Array:</label>
+        <input type="text" id="custom-array" placeholder="e.g., 10,20,30,40">
+        <button id="set-array">Set Array</button>
+        <button id="theme-toggle">Dark Mode</button>
+    </div>
+    
+    <aside id="insertion-sort-info" class="info-panel">
+        <h2>Insertion Sort</h2>
+        <table>
+            <tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr>
+            <tr><td>Best Case</td><td>O(n)</td><td>O(1)</td></tr>
+            <tr><td>Average Case</td><td>O(n²)</td><td>O(1)</td></tr>
+            <tr><td>Worst Case</td><td>O(n²)</td><td>O(1)</td></tr>
+        </table>
+        <div id="loop-indicator"></div>
+        <div id="algorithm-explanation">
+            <h2><strong>What is Insertion Sort?</strong></h2>
+            <p>Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It is much like sorting playing cards in your hands. The array is divided into a sorted and an unsorted region. Elements from the unsorted region are picked and placed at the correct position in the sorted region.</p><br>
+        <br>
+            <h2><strong>How Does It Work?</strong></h2>
+            <p>1. Start with the second element. The first element is already sorted.</p>
+            <p>2. Compare the current element with the elements in the sorted region, moving the sorted elements one position to the right as needed.</p>
+            <p>3. Place the current element at its correct position in the sorted region.</p>
+            <p>4. Repeat this process for every element in the array until the entire array is sorted.</p><br>
+
+            <!-- Step-by-step Explanation -->
+            <h2><strong>Step-by-Step Insertion Sort Explanation</strong></h2>
+            <!-- <div id="step-1" class="explanation-step"> -->
+                <h3>Step 1: Start with the second element</h3>
+                <p>The first element is already considered sorted. We start from the second element.</p>
+                <p>Example: <code>[5, 2, 9, 1, 5, 6]</code></p>
+                <p>The second element (2) will be compared with the first element (5).</p><br>
+            <!-- </div> -->
+            
+            <!-- <div id="step-2" class="explanation-step" style="display:none;"> -->
+                <h3>Step 2: Compare the second element (2) with the first element (5)</h3>
+                <p>Since 2 is smaller than 5, we move 5 one position to the right and place 2 in the first position.</p>
+                <p>Example: <code>[2, 5, 9, 1, 5, 6]</code></p><br>
+            <!-- </div> -->
+            
+            <!-- <div id="step-3" class="explanation-step" style="display:none;"> -->
+                <h3>Step 3: Move to the third element (9)</h3>
+                <p>The third element (9) is compared with the elements in the sorted part.</p>
+                <p>Since 9 is larger than 5, it remains in its place.</p>
+                <p>Example: <code>[2, 5, 9, 1, 5, 6]</code></p><br>
+            <!-- </div> -->
+
+            <!-- <div id="step-4" class="explanation-step" style="display:none;"> -->
+                <h3>Step 4: Compare the fourth element (1)</h3>
+                <p>We compare 1 with the elements in the sorted region and move each element greater than 1 one position to the right.</p>
+                <p>Example: <code>[1, 2, 5, 9, 5, 6]</code></p><br>
+            <!-- </div> -->
+
+            <!-- <div id="step-5" class="explanation-step" style="display:none;"> -->
+                <h3>Step 5: Compare the fifth element (5)</h3>
+                <p>We compare 5 with the elements in the sorted region and move any larger elements to the right.</p>
+                <p>Example: <code>[1, 2, 5, 5, 9, 6]</code></p><br>
+            <!-- </div> -->
+
+            <!-- <div id="step-6" class="explanation-step" style="display:none;"> -->
+                <h3>Step 6: Compare the last element (6)</h3>
+                <p>We compare 6 with the elements in the sorted region and place it at the correct position.</p>
+                <p>Example: <code>[1, 2, 5, 5, 6, 9]</code></p><br>
+            <!-- </div> -->
+
+            <h3><strong>Key Points:</strong></h3>
+            <p>1. Insertion Sort is efficient for small datasets or nearly sorted arrays.</p>
+            <p>2. It has a time complexity of O(n²) in the average and worst cases, but O(n) in the best case when the array is already sorted.</p>
+            <p>3. It is an in-place sorting algorithm, meaning it does not require additional memory for sorting.</p>
+        </div>
+    </aside>
+
+    <script src="insertion.js"></script>
+    <a href="index.html" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 100px;">HOME</a>
+
+</body>
+</html>
